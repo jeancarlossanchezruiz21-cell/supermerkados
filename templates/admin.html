@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel Admin</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Panel del Administrador</h2>
+
+<a href="/agregar_supermercado" class="btn">Agregar Supermercado</a>
+<a href="/logout" class="btn btn-red">Cerrar sesión</a>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Apertura</th>
+        <th>Cierre</th>
+        <th>Propietario</th>
+    </tr>
+
+    {% for s in supermercados %}
+    <tr>
+        <td>{{ s[1] }}</td>
+        <td>{{ s[2] }}</td>
+        <td>{{ s[3] }}</td>
+        <td>{{ s[4] }}</td>
+        <td>{{ s[5] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

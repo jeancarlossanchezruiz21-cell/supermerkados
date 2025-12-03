@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Supermercado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}">
+</head>
+<body>
+
+<h1>Editar Supermercado</h1>
+
+<form method="POST">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" value="{{ supermercado[1] }}" required>
+
+    <label>Propietario:</label>
+    <input type="text" name="propietario" value="{{ supermercado[2] }}" required>
+
+    <label>Dirección:</label>
+    <input type="text" name="direccion" value="{{ supermercado[3] }}" required>
+
+    <label>Teléfono:</label>
+    <input type="text" name="telefono" value="{{ supermercado[4] }}" required>
+
+    <label>Apertura:</label>
+    <input type="time" name="apertura" value="{{ supermercado[5] }}" required>
+
+    <label>Cierre:</label>
+    <input type="time" name="cierre" value="{{ supermercado[6] }}" required>
+
+    <button type="submit">Actualizar</button>
+</form>
+
+<a href="{{ url_for('supermercados') }}">Volver</a>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Supermercados</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Supermercados</h1>
+
+{% if admin %}
+<a class="btn" href="/logout">Cerrar sesión</a>
+{% else %}
+<a class="btn" href="/login">Login Admin</a>
+{% endif %}
+
+{% if admin %}
+<div class="formulario">
+    <form action="/agregar" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="propietario" placeholder="Propietario" required>
+        <input type="text" name="telefono" placeholder="Teléfono" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
+        <input type="text" name="apertura" placeholder="Hora de Apertura" required>
+        <input type="text" name="cierre" placeholder="Hora de Cierre" required>
+
+        <button type="submit">Agregar</button>
+    </form>
+</div>
+{% endif %}
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Propietario</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+        <th>Apertura</th>
+        <th>Cierre</th>
+        {% if admin %}<th>Acciones</th>{% endif %}
+    </tr>
+
+    {% for s in supermercados %}
+    <tr>
+        <td>{{ s[1] }}</td>
+        <td>{{ s[2] }}</td>
+        <td>{{ s[3] }}</td>
+        <td>{{ s[4] }}</td>
+        <td>{{ s[5] }}</td>
+        <td>{{ s[6] }}</td>
+
+        {% if admin %}
+        <td>
+            <a class="btn editar" href="/editar/{{ s[0] }}">Editar</a>
+            <a class="btn eliminar" href="/eliminar/{{ s[0] }}">Eliminar</a>
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
